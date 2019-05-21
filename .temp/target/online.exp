@@ -1,0 +1,33 @@
+#!/usr/bin/expect
+set timeout -1
+
+set host [lindex $argv 0]
+set root [lindex $argv 1]
+set password [lindex $argv 2]
+set path [lindex $argv 3]
+set tag  [lindex $argv 4]
+
+spawn ssh $root@$host
+expect {
+   "yes/no"  {send "yes\r";exp_continue}
+   "password:" {send "$password\r"}
+}
+expect "]#"
+send "cd $path\r"
+expect "]#"
+send "pm2 stop pm2.json && service nginx stop\r"
+expect "]#"
+send " git checkout master && git pull && git checkout $tag\r"
+expect "]#"
+send "pm2 start pm2.json --update-env && service nginx start \r"
+expect "]#"
+send "netstat -anlp|grep nginx\r"
+expect "]#"
+send "netstat -anlp|grep -i pm2\r"
+expect "]#"
+send "ps aux|grep node\r"
+expect "]#"
+send "git branch\r"
+expect "]#"
+send "exit \r"
+interact
