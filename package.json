@@ -1,0 +1,26 @@
+{
+  "name": "sh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "execa": "^1.0.0",
+    "fs-extra": "^8.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitHubJian/sh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitHubJian/sh/issues"
+  },
+  "homepage": "https://github.com/GitHubJian/sh#readme"
+}
